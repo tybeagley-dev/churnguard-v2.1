@@ -17,6 +17,20 @@ export function useAccountRiskHistory(accountId: number) {
 
 export function useDashboardAnalytics() {
   return useQuery<DashboardAnalytics>({
-    queryKey: ["/api/analytics/dashboard"],
+    queryKey: ["/api/accounts"],
+    queryFn: async () => {
+      const response = await fetch('/api/accounts');
+      if (!response.ok) throw new Error('Failed to fetch accounts');
+      const accounts = await response.json();
+      
+      // Calculate analytics from accounts data (same logic as our clean backend)
+      return {
+        totalAccounts: accounts.length,
+        highRiskCount: accounts.filter((acc: any) => acc.risk_level === 'high').length,
+        mediumRiskCount: accounts.filter((acc: any) => acc.risk_level === 'medium').length,
+        lowRiskCount: accounts.filter((acc: any) => acc.risk_level === 'low').length,
+        totalRevenue: accounts.reduce((sum: number, acc: any) => sum + (acc.total_spend || 0), 0),
+      };
+    },
   });
 }

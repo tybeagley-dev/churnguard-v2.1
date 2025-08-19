@@ -52,7 +52,8 @@ export function Claude12MonthChart() {
   });
 
   const { data: claude12MonthData, isLoading, error } = useQuery<Claude12MonthData[]>({
-    queryKey: ['/api/bigquery/claude-12month'],
+    queryKey: ['/api/historical-performance'],
+    queryFn: () => fetch('/api/historical-performance').then(res => res.json()),
     staleTime: 10 * 60 * 1000, // 10 minutes
     gcTime: 20 * 60 * 1000, // 20 minutes
     retry: 1,

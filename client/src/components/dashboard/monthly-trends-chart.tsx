@@ -13,9 +13,9 @@ interface MonthlyTrendsData {
 export default function MonthlyTrendsChart() {
   // Fetch historical monthly data for the previous 12 months
   const { data: monthlyData, isLoading, error } = useQuery({
-    queryKey: ['/api/bigquery/monthly-trends', 'risk_level'],
+    queryKey: ['/api/monthly-trends', 'risk_level'],
     queryFn: async () => {
-      const response = await fetch(`/api/bigquery/monthly-trends?segmentation=risk_level`);
+      const response = await fetch(`/api/monthly-trends`);
       if (!response.ok) {
         throw new Error('Failed to fetch monthly trends data');
       }

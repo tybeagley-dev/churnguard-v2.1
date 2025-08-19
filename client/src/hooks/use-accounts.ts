@@ -58,7 +58,7 @@ export function useUpdateAccountRisk() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/accounts"] });
       queryClient.invalidateQueries({ queryKey: ["/api/risk-scores/latest"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/analytics/dashboard"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/accounts"] });
     },
   });
 }
@@ -74,7 +74,7 @@ export function useUpdateAllRiskScores() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/accounts"] });
       queryClient.invalidateQueries({ queryKey: ["/api/risk-scores/latest"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/analytics/dashboard"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/accounts"] });
     },
   });
 }
