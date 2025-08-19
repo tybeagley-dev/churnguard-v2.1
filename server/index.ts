@@ -67,8 +67,8 @@ app.use((req, res, next) => {
     });
   }
 
-  // Use port 8000 (like ChurnGuard 3.0) or environment port
-  const port = process.env.PORT || 8000;
+  // Use port 5000 (Replit standard) or environment port
+  const port = process.env.PORT || 5000;
   server.listen(port, '0.0.0.0', () => {
     console.log(`🎯 ChurnGuard 2.1 serving on port ${port}`);
     console.log(`📊 Clean architecture: 2.0 frontend + 3.0 backend`);
