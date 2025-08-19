@@ -5,7 +5,7 @@ export class BigQueryDataService {
   private isDemo: boolean;
 
   constructor() {
-    this.isDemo = process.env.DEMO_MODE === 'true' || process.env.NODE_ENV === 'development';
+    this.isDemo = process.env.DEMO_MODE === 'true';
     
     if (!this.isDemo) {
       let credentials: any = undefined;
